@@ -284,3 +284,14 @@ To git@github.com:hemantasahu/datasciencecoursera.git
    710f4f9..d40e95f  master -> master
 [root@rhel7-base datasciencecoursera]# 
 
+[root@rhel7-base datasciencecoursera]# git push origin master
+To git@github.com:hemantasahu/datasciencecoursera.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:hemantasahu/datasciencecoursera.git'
+hint: Updates were rejected because the remote contains work that you do  ==> because I have manually edited in the site/someone else updated master branch
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[root@rhel7-base datasciencecoursera]#
+
