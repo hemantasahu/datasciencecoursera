@@ -149,3 +149,138 @@ cp: overwrite ‘../../jsvc’? yes
 tcp6       0      0 :::9080                 :::*                    LISTEN      off (0.00/0/0)
 [root@rhel7-base conf]# 
 
+
+
+  Setting Up Git -SSH
+---------------------
+
+[root@rhel7-base Desktop]# git clone git@github.com:hemantasahu/datasciencecoursera.git
+Cloning into 'datasciencecoursera'...
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+
+[root@rhel7-base ~]# git config --global user.name "Hemanta Sahu"
+[root@rhel7-base ~]# git config --global user.name "hemantaku.sahu@gmail.com"
+
+[root@rhel7-base Desktop]# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+01:ed:f9:77:f2:f1:00:14:7f:1a:3c:9b:4e:f0:c7:f9 root@rhel7-base
+The key's randomart image is:
++--[ RSA 2048]----+
+|      ..    ..   |
+|       ..   .o   |
+|       ... .. = .|
+|        o.  .o O.|
+|        S.   .*.o|
+|          . oo+..|
+|           . +.+E|
+|              . .|
+|                 |
++-----------------+
+[root@rhel7-base Desktop]#  Run the agent in background.
+=========================================================
+[root@rhel7-base ~]# eval `ssh-agent -s`
+Agent pid 18394
+
+Then add the Key and list it
+=============================
+[root@rhel7-base ~]# ssh-add .ssh/id_rsa
+Identity added: .ssh/id_rsa (.ssh/id_rsa)
+[root@rhel7-base ~]# ssh-add -l
+2048 01:ed:f9:77:f2:f1:00:14:7f:1a:3c:9b:4e:f0:c7:f9 .ssh/id_rsa (RSA)
+
+[root@rhel7-base Desktop]# cat ~/.ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZR8H5vPimqdR5FvQ/j4knDEi23sdgFob1a9S9eqH4nelf9tWNs+GeP2tTVZ+wr1DXwdtb9NSlnatzirnW8irb6/37VOrb8s4nq0rah4FFewQ+/Xf6NwCZciZ4TROGyDJGUIaDBLUUnVLn3nj09hkpH7L4YyaDwgWZJJ28HsGaaT7pCeLnBbwls7xJwlUF0L4uyzb1dYGwK90JtFpnnoLTvir+omJTMhC9TJ2gS23TxT7ased1pA/AzRrGP5IeIeZOMIbS2BP8Ld9k2LETJee9fVV2e+EdDuQcXAfpD1UNbouewrakR0T2gUbLWLtVQAgJ0jg5UxTgc8jKU/t2Cit7 root@rhel7-base
+
+copy the entire content of cat ~/.ssh/id_rsa.pub  to https://github.com/settings/ssh new SSH key it will ask for one time password and add to its keybase with finger print
+
+rhel7-home_access
+Fingerprint: 01:ed:f9:77:f2:f1:00:14:7f:1a:3c:9b:4e:f0:c7:f9  
+
+Now you should able to clone.
+
+[root@rhel7-base ~]# ssh -T git@github.com
+Hi hemantasahu! You've successfully authenticated, but GitHub does not provide shell access.
+[root@rhel7-base ~]# ssh git@github.com
+
+
+[root@rhel7-base Desktop]# git clone git@github.com:hemantasahu/datasciencecoursera.git
+Cloning into 'datasciencecoursera'...
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
+Receiving objects: 100% (3/3), done.
+Checking connectivity... done.
+[root@rhel7-base Desktop]# cd datasciencecoursera/
+[root@rhel7-base datasciencecoursera]# ls -al
+total 8
+drwxr-xr-x  3 root root   37 Nov 20 11:21 .
+drwxr-xr-x. 5 root root 4096 Nov 20 11:21 ..
+drwxr-xr-x  8 root root  152 Nov 20 11:21 .git
+-rw-r--r--  1 root root   27 Nov 20 11:21 HelloWorld.md
+[root@rhel7-base datasciencecoursera]#
+[root@rhel7-base datasciencecoursera]# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+[root@rhel7-base datasciencecoursera]#
+
+[root@rhel7-base datasciencecoursera]# git remote -v
+origin	git@github.com:hemantasahu/datasciencecoursera.git (fetch)
+origin	git@github.com:hemantasahu/datasciencecoursera.git (push)
+[root@rhel7-base datasciencecoursera]#
+
+[root@rhel7-base datasciencecoursera]# cp -pr ~/Desktop/Apache-tomcat_install.md .
+[root@rhel7-base datasciencecoursera]# ls
+Apache-tomcat_install.md  HelloWorld.md
+[root@rhel7-base datasciencecoursera]# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Apache-tomcat_install.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+[root@rhel7-base datasciencecoursera]#
+[root@rhel7-base datasciencecoursera]# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   Apache-tomcat_install.md
+	modified:   HelloWorld.md
+
+[root@rhel7-base datasciencecoursera]#
+
+root@rhel7-base datasciencecoursera]# git commit -am "Apache install and github basic setup"
+[master d40e95f] Apache install and github basic setup
+ 2 files changed, 153 insertions(+)
+ create mode 100644 Apache-tomcat_install.md
+[root@rhel7-base datasciencecoursera]# git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+[root@rhel7-base datasciencecoursera]# git push origin master
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.95 KiB | 0 bytes/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To git@github.com:hemantasahu/datasciencecoursera.git
+   710f4f9..d40e95f  master -> master
+[root@rhel7-base datasciencecoursera]# 
+
