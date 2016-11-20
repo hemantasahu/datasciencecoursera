@@ -40,7 +40,7 @@ then again run alternatives --config java.
 /opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix
 [root@rhel7-base unix]# ./configure 
 gcc   jsvc-unix.o libservice.a -ldl -lpthread -o ../jsvc
-make[1]: Leaving directory `/opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
+make[1]: Leaving directory /opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
 [root@rhel7-base unix]# ls -l jsvc 
 -rwxr-xr-x 1 root root 170635 Nov 20 07:58 jsvc
 [root@rhel7-base unix]# 
@@ -115,9 +115,9 @@ bash: cd: commons-daemon-1.0.x-native-src/unix: No such file or directory
 [root@rhel7-base unix]# ./configure 
 [root@rhel7-base unix]# make
 (cd native; make  all)
-make[1]: Entering directory `/opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
+make[1]: Entering directory /opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
 gcc   jsvc-unix.o libservice.a -ldl -lpthread -o ../jsvc
-make[1]: Leaving directory `/opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
+make[1]: Leaving directory /opt/apache-tomcat-9.0.0.M13/bin/commons-daemon-1.0.15-native-src/unix/native'
 [root@rhel7-base unix]# cp jsvc ../..
 cp: overwrite ‘../../jsvc’? yes
 [root@rhel7-base unix]# cd ../..
