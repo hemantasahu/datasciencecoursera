@@ -154,9 +154,9 @@ tcp6       0      0 :::9080                 :::*                    LISTEN      
   -----------------------------
 [root@rhel7-base conf]$ lsof -i :9080
 COMMAND   PID      USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
-java    21959 u43970458   48u  IPv4 3138763      0t0  TCP *:glrpc (LISTEN)
+java    21959      user1   48u  IPv4 3138763      0t0  TCP *:glrpc (LISTEN)
 [root@rhel7-base conf]$ ps -ef|grep 21959
-10050    21959     1 20 09:05 pts/2    00:00:28 /opt/jdk1.8.0_111/jre/bin/java -Djava.util.logging.config.file=/home/u43970458/apache-tomcat-9.0.0.M11/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -classpath /home/u43970458/apache-tomcat-9.0.0.M11/bin/bootstrap.jar:/home/u43970458/apache-tomcat-9.0.0.M11/bin/tomcat-juli.jar -Dcatalina.base=/home/u43970458/apache-tomcat-9.0.0.M11 -Dcatalina.home=/home/u43970458/apache-tomcat-9.0.0.M11 -Djava.io.tmpdir=/home/u43970458/apache-tomcat-9.0.0.M11/temp org.apache.catalina.startup.Bootstrap start10050    22104 21822  0 09:07 pts/2    00:00:00 grep 21959
+10050    21959     1 20 09:05 pts/2    00:00:28 /opt/jdk1.8.0_111/jre/bin/java -Djava.util.logging.config.file=/home/user1/apache-tomcat-9.0.0.M11/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -classpath /home/user1/apache-tomcat-9.0.0.M11/bin/bootstrap.jar:/home/user1/apache-tomcat-9.0.0.M11/bin/tomcat-juli.jar -Dcatalina.base=/home/user1/apache-tomcat-9.0.0.M11 -Dcatalina.home=/home/user1/apache-tomcat-9.0.0.M11 -Djava.io.tmpdir=/home/user1/apache-tomcat-9.0.0.M11/temp org.apache.catalina.startup.Bootstrap start10050    22104 21822  0 09:07 pts/2    00:00:00 grep 21959
 [u43970458@hkl104200 ~]$
 
   Setting Up Git -SSH
